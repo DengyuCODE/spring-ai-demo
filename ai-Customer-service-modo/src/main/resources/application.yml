@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: spring-ai-base-modo
+  ai:
+    dashscope:
+      api-key: ${ALI_AI_KEY:sk-83f1849b0ff94f1ba63bae7394b2236e}
+      #base-url: https://dashscope.aliyuncs.com/compatible-mode/v1
+      chat:
+        options:
+          model: qwen3-max
+      image:
+        options:
+          model: wanx2.1-t2i-turbo
+    memory:
+      redis:
+        host: 127.0.0.1
+        port: 6379
+        password: 132589DENGYU
+        database: 0
+        timeout: 30000
+  datasource:
+    url: jdbc:mysql://localhost:3306/sping-ai-demo?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: root
+    password: 132589DENGYU
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  # sql:
+  #   init:
+  #     mode: always
+  #     schema-locations: classpath:/sql/table.sql
+  #     data-locations: classpath:/sql/insert_data.sql
+
+mybatis:
+  mapper-locations: classpath*:com/yu/aicustomerservicemodo/Mapper/xml/*.xml
+
+server:
+  address: localhost
+  port: 8080
+logging:
+  level:
+    org:
+      springframework:
+        ai:
+          chat:
+            client:
+              advisor:
+                SimpleLoggerAdvisor: debug

@@ -1,4 +1,4 @@
-package com.example.aicustomerservicemodo;
+package com.yu.aicustomerservicemodo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

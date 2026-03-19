@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yu.aicustomerservicemodo.Mapper.BookingMapper">
+
+    <resultMap id="BaseResultMap" type="com.yu.aicustomerservicemodo.pojo.Booking">
+        <id column="id_" property="id_" />
+        <result column="user_id" property="userId" />
+        <result column="booking_num" property="resNum" />
+        <result column="booking_date" property="resDate" />
+        <result column="from_" property="from_" />
+        <result column="to_" property="to_" />
+        <result column="status_" property="status_" />
+        <result column="level_" property="level_" />
+        <result column="remark_" property="remark_" />
+        <result column="enable_" property="enable_" />
+        <result column="create_by" property="createBy" />
+        <result column="create_time" property="createTime" />
+        <result column="update_by" property="updateBy" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        SELECT * FROM booking WHERE enable_ = 1
+    </select>
+
+    <insert id="insert" parameterType="com.yu.aicustomerservicemodo.pojo.Booking">
+        INSERT INTO booking (id_, user_id, booking_num, booking_date, from_, to_, status_, remark_, enable_, create_by, create_time, update_by, update_time)
+        VALUES (#{id_}, #{userId}, #{resNum}, #{resDate}, #{from_}, #{to_}, #{status_}, #{remark_}, #{enable_}, #{createBy}, #{createTime}, #{updateBy}, #{updateTime})
+    </insert>
+
+    <update id="update" parameterType="com.yu.aicustomerservicemodo.pojo.Booking">
+        UPDATE booking
+        SET user_id = #{userId},
+            booking_num = #{resNum},
+            booking_date = #{resDate},
+            from_ = #{from_},
+            to_ = #{to_},
+            status_ = #{status_},
+            remark_ = #{remark_},
+            enable_ = #{enable_},
+            update_by = #{updateBy},
+            update_time = #{updateTime}
+        WHERE id_ = #{id_}
+    </update>
+
+    <update id="updateStatusById">
+        UPDATE booking SET status_ = #{status} WHERE id_ = #{id}
+    </update>
+
+    <select id="selectById" resultMap="BaseResultMap">
+        SELECT * FROM booking WHERE id_ = #{id} AND enable_ = 1
+    </select>
+
+    <select id="selectByResNum" resultMap="BaseResultMap">
+        SELECT * FROM booking WHERE booking_num = #{resNum} AND enable_ = 1
+    </select>
+
+</mapper>

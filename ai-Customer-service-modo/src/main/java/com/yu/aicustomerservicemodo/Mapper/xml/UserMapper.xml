@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yu.aicustomerservicemodo.Mapper.UserMapper">
+
+    <resultMap id="BaseResultMap" type="com.yu.aicustomerservicemodo.pojo.User">
+        <id column="id_" property="id_" />
+        <result column="account_" property="account_" />
+        <result column="user_name" property="userName" />
+        <result column="phone_" property="phone_" />
+        <result column="remark_" property="remark_" />
+        <result column="enable_" property="enable_" />
+        <result column="create_by" property="createBy" />
+        <result column="create_time" property="createTime" />
+        <result column="update_by" property="updateBy" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <select id="selectById" resultMap="BaseResultMap">
+        SELECT * FROM user WHERE id_ = #{id} AND enable_ = 1
+    </select>
+
+    <select id="selectUserNameById" resultType="java.lang.String">
+        SELECT user_name FROM user WHERE id_ = #{id} AND enable_ = 1
+    </select>
+
+</mapper>
